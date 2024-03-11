@@ -13,10 +13,10 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ["3.6", "3.7", "3.8", "3.9"]
+        python-version: ["3.7", "3.8", "3.9"]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4.1.1
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5.0.0
@@ -26,16 +26,17 @@ jobs:
     - name: Install dependencies
       run: |
         pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r Chapter01/requirements.txt
 
     - name: Lint code
       run: |
-        pylint --disable=R,C hello.py
+        pylint --disable=R,C Chapter01/hello.py
 
     - name: Format code
       run: |
-        black *.py
+        pip install black
+        black Chapter01/*.py
 
     - name: Test
       run: |
-        python -m pytest -vv --cov=hello test_hello.py
+        python -m pytest -vv --cov=hello Chapter01/test_hello.py
