@@ -1,0 +1,35 @@
+# Second stage: Python 3.7
+FROM python:3.7 AS python37
+
+WORKDIR /app
+
+# Install dependencies for Python 3.7
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Third stage: Python 3.8
+FROM python:3.8 AS python38
+
+WORKDIR /app
+
+# Install dependencies for Python 3.8
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Fourth stage: Python 3.9
+FROM python:3.9 AS python39
+
+WORKDIR /app
+
+# Install dependencies for Python 3.9
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Final stage
+FROM python39 AS final
+
+# Copy the source code
+COPY . .
+
+# Set the default command
+CMD ["python", "app.py"]
