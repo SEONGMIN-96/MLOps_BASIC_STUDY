@@ -30,7 +30,7 @@ jobs:
 
     - name: Lint code
       run: |
-        pylint --disable=R,C hello.py
+        pylint --disable=R,C Chapter01/hello.py
 
     - name: Format code
       run: |
@@ -38,4 +38,4 @@ jobs:
 
     - name: Test
       run: |
-        python -m pytest -vv --cov=hello test_hello.py
+        python -m pytest -vv --cov=hello Chapter01/test_hello.py
