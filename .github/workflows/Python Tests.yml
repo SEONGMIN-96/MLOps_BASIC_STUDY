@@ -26,7 +26,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install --upgrade pip
-          pip install -r Chapter01/requirements.txt
+        pip install -r Chapter01/requirements.txt
 
     - name: Lint code
       run: |
@@ -34,6 +34,7 @@ jobs:
 
     - name: Format code
       run: |
+        pip install black
         black Chapter01/*.py
 
     - name: Test
