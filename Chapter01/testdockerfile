@@ -4,7 +4,7 @@ FROM python:3.7 AS python37
 WORKDIR /app
 
 # Install dependencies for Python 3.7
-COPY Chapter01/requirements.txt .
+COPY Chapter01/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Second stage: Python 3.8
@@ -13,7 +13,7 @@ FROM python:3.8 AS python38
 WORKDIR /app
 
 # Install dependencies for Python 3.8
-COPY --from=python37 /app/requirements.txt .
+COPY --from=python37 /app/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Third stage: Python 3.9
@@ -22,7 +22,7 @@ FROM python:3.9 AS python39
 WORKDIR /app
 
 # Install dependencies for Python 3.9
-COPY --from=python37 /app/requirements.txt .
+COPY --from=python37 /app/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Final stage
