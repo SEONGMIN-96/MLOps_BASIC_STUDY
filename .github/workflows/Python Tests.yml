@@ -34,7 +34,7 @@ jobs:
 
     - name: Format code
       run: |
-        black *.py
+        black Chapter01/*.py
 
     - name: Test
       run: |
