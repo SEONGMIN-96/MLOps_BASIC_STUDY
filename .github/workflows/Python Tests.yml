@@ -26,17 +26,17 @@ jobs:
     - name: Install dependencies
       run: |
         pip install --upgrade pip
-        pip install -r Chapter01/requirements.txt
+        pip install -r .github/workflows/requirements.txt
 
     - name: Lint code
       run: |
-        pylint --disable=R,C Chapter01/hello.py
+        pylint --disable=R,C .github/workflows/hello.py
 
     - name: Format code
       run: |
         pip install black
-        black Chapter01/*.py
+        black .github/workflows/*.py
 
     - name: Test
       run: |
-        python -m pytest -vv --cov=hello Chapter01/test_hello.py
+        python -m pytest -vv --cov=hello .github/workflows/test_hello.py
