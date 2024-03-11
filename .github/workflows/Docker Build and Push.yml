@@ -24,7 +24,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t yourusername/yourimage:latest .
+        run: docker build -t dockertest/dockertest:latest -f Chapter01/testdockerfile
 
       - name: Push Docker image to Docker Hub
-        run: docker push yourusername/yourimage:latest
+        run: docker push dockertest/dockertest:latest -f Chapter01/testdockerfile
